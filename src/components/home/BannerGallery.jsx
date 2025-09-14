@@ -41,14 +41,14 @@ const BannerGallery = () => {
                         <img
                             src={image}
                             alt=""
-                            className="object-cover "
+                            className="object-cover"
                         />
                     </div>
                 ))}
 
 
             </div>
-            <div className=" mx-auto w-1/2 flex justify-center gap-5">
+            <div className=" mx-auto w-1/2 flex flex-wrap justify-center gap-5">
                 <button className="bg-white shadow-md py-3 px-5 rounded-full text-small-text flex justify-center items-center gap-3"><CustomTikMark/> BACB Aligned</button>
                 <button className="bg-white shadow-md py-3 px-5 rounded-full text-small-text flex justify-center items-center gap-3"><CustomTikMark/> 100% Online</button>
                 <button className="bg-white shadow-md py-3 px-5 rounded-full text-small-text flex justify-center items-center gap-3"><CustomTikMark/> Certificate Included</button>
