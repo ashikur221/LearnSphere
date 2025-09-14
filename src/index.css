@@ -12,8 +12,10 @@
 
   /* color */
 
-  --color-primary: green;
-  --color-bg-custom: linear-gradient(red, yellow);
+  --color-theme-primary: #0a9fe0;
+  --color-theme-secondary: linear-gradient(#ffcf2f, #ffa628);
+  --color-small-text: #737373;
+  --color-big-text: #06052e;
 
   /* breakpoint */
   --breakpoint-xxs: 390px;
@@ -55,6 +57,10 @@
       transform: rotate(360deg);
     }
   }
+}
+
+body {
+  font-family: var(--font-poppins);
 }
 
 /* radius */
