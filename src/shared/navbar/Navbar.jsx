@@ -8,12 +8,12 @@ const Navbar = () => {
   
 
   return (
-    <div className='container mx-auto flex items-center justify-between my-4'>
+    <div className='container bg-white mx-auto flex items-center justify-between my-4'>
       <div className="logo">
         <img src={ImageProvider.Navlogo} className='w-20' alt="" />
       </div>
 
-      <div className="links bg-theme-primary py-3 px-4 rounded-full flex gap-10 text-white">
+      <div className="links ml-20 bg-theme-primary py-3 px-4 rounded-full flex gap-10 text-white">
         {
           GlobalNavLinks.map((link) => (
             <NavLink className={({ isActive }) => `px-4 py-2 rounded-full ${isActive ? 'text-theme-primary bg-white ' : 'text-white'}`} to={link.link}>{link.name}</NavLink>
