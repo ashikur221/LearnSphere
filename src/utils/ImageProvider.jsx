@@ -12,8 +12,22 @@ import focus from '@/assets/images/focus.png'
 import impact from '@/assets/images/impact.png'
 import stick from '@/assets/images/stick.png'
 import course from '@/assets/images/course.png'
+import module1 from '@/assets/images/module1.png'
+import module2 from '@/assets/images/module2.png'
+import module3 from '@/assets/images/module3.png'
+import jenny from '@/assets/images/jenny.png'
+import test1 from '@/assets/images/test1.png'
+import test2 from '@/assets/images/test2.png'
+import quote from '@/assets/images/quote.png'
 
 export const ImageProvider = {
+    quote,
+    test1,
+    test2,
+    jenny,
+    module1,
+    module2,
+    module3,
     course,
     stick,
     impact,
