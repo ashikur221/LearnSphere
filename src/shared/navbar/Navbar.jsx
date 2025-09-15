@@ -8,7 +8,7 @@ const Navbar = () => {
   
 
   return (
-    <div className='container bg-white mx-auto flex items-center justify-between my-4'>
+    <div className='container px-2 bg-white mx-auto flex items-center justify-between my-4'>
       <div className="logo">
         <img src={ImageProvider.Navlogo} className='w-20' alt="" />
       </div>

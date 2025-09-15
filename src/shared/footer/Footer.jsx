@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-white ">
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 container mx-auto">
+      <div className="grid grid-cols-1 px-5 md:grid-cols-3 lg:grid-cols-4 gap-10 container mx-auto">
 
         <div className="">
           <img src={ImageProvider.Navlogo} alt="" />
@@ -86,12 +86,10 @@ const Footer = () => {
 
           </div>
         </div>
-
-
       </div>
 
       <div
-        className="border-t bg-theme-primary border-gray-200 dark:border-slate-700 py-5  mt-[40px] flex items-center justify-between w-full flex-wrap text-white">
+        className="border-t px-5 bg-theme-primary border-gray-200 dark:border-slate-700 py-5  mt-[40px] flex items-center justify-between w-full flex-wrap text-white">
 
         <div className="container mx-auto flex justify-between">
           <p className="text-[0.9rem] "> privacy policy | terms & conditions </p>
