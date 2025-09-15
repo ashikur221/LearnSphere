@@ -19,8 +19,12 @@ import jenny from '@/assets/images/jenny.png'
 import test1 from '@/assets/images/test1.png'
 import test2 from '@/assets/images/test2.png'
 import quote from '@/assets/images/quote.png'
+import newsletter from '@/assets/images/newsletter.png'
+import mission from '@/assets/images/mission.png'
 
 export const ImageProvider = {
+    mission,
+    newsletter,
     quote,
     test1,
     test2,

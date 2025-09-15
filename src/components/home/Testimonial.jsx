@@ -66,7 +66,7 @@ const ServiceCard = ({ testimonial }) => {
 const Testimonial = () => {
     const swiperRef = useRef(null);
     return (
-        <section id='service' className="px-6">
+        <section id='service' className="container mx-auto">
             <p className="text-2xl xlg:text-5xl font-semibold my-10">
                 Student's {" "}
                 <span className="text-theme-primary relative inline-block">
