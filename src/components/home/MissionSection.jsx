@@ -3,7 +3,7 @@ import React from 'react';
 
 const MissionSection = () => {
     return (
-        <div className='bg-[#f0fbf7] py-10'>
+        <div className='bg-[#f0fbf7] py-10 mb-10'>
             <div className="container mx-auto flex flex-col items-center lg:flex-row">
                 <div className="lg:w-1/2">
                     <img src={ImageProvider.mission} alt="" />

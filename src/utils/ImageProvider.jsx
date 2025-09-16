@@ -21,8 +21,10 @@ import test2 from '@/assets/images/test2.png'
 import quote from '@/assets/images/quote.png'
 import newsletter from '@/assets/images/newsletter.png'
 import mission from '@/assets/images/mission.png'
+import aboutBanner from '@/assets/images/aboutBanner.png'
 
 export const ImageProvider = {
+    aboutBanner,
     mission,
     newsletter,
     quote,
