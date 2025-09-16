@@ -3,6 +3,8 @@ import AdminLayout from "@/layout/AdminLayout";
 import Layout from "@/layout/Layout";
 import AboutPage from "@/pages/about/AboutPage";
 import ContactPage from "@/pages/contact/ContactPage";
+import CoursePage from "@/pages/course/CoursePage";
+import EnrolledCourse from "@/pages/enrolledCourse/EnrolledCourse";
 import Home from "@/pages/home/Home";
 
 
@@ -23,7 +25,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: <ContactPage/>
+        element: <ContactPage />
+      },
+      {
+        path: "/course",
+        element: <CoursePage />
+      },
+      {
+        path: "/enrolled-course",
+        element: <EnrolledCourse />
       }
 
     ],

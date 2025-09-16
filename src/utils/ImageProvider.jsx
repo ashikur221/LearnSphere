@@ -31,8 +31,12 @@ import three from '@/assets/images/three.png'
 import question from '@/assets/images/question.png'
 import contactBanner from '@/assets/images/contactBanner.png'
 import contact from '@/assets/images/contact.png'
+import bacb from '@/assets/images/bacb.png'
+import certificate from '@/assets/images/certificate.png'
 
 export const ImageProvider = {
+    certificate,
+    bacb,
     contact,
     contactBanner,
     question,

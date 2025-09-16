@@ -21,7 +21,7 @@ const ContactForm = () => {
 
     return (
         <div className='contact-form container mx-auto px-5 section-padding-y'>
-            <div className="flex flex-col-reverse md:flex-row gap-4">
+            <div className="flex flex-col-reverse md:flex-row gap-14">
                 <div className="md:w-1/2 w-full space-y-5">
                     <div className="bg-theme-primary/10  rounded-2xl">
                         <img src={ImageProvider.contact} alt="" />
