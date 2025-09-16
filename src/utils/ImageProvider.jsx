@@ -29,8 +29,12 @@ import one from '@/assets/images/one.png'
 import two from '@/assets/images/two.png'
 import three from '@/assets/images/three.png'
 import question from '@/assets/images/question.png'
+import contactBanner from '@/assets/images/contactBanner.png'
+import contact from '@/assets/images/contact.png'
 
 export const ImageProvider = {
+    contact,
+    contactBanner,
     question,
     one,
     two,
