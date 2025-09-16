@@ -22,8 +22,22 @@ import quote from '@/assets/images/quote.png'
 import newsletter from '@/assets/images/newsletter.png'
 import mission from '@/assets/images/mission.png'
 import aboutBanner from '@/assets/images/aboutBanner.png'
+import program from '@/assets/images/program.png'
+import flower from '@/assets/images/flower.png'
+import flower2 from '@/assets/images/flower2.png'
+import one from '@/assets/images/one.png'
+import two from '@/assets/images/two.png'
+import three from '@/assets/images/three.png'
+import question from '@/assets/images/question.png'
 
 export const ImageProvider = {
+    question,
+    one,
+    two,
+    three,
+    flower2,
+    flower,
+    program,
     aboutBanner,
     mission,
     newsletter,

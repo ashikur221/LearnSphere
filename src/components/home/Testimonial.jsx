@@ -3,7 +3,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import { useRef, useState } from 'react';
-import { services } from '@/utils/data';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ImageProvider } from '@/utils/ImageProvider';
 
