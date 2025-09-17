@@ -10,7 +10,7 @@ const CourseModuleSidebar = ({ modules, activeLessonId, onSelectLesson }) => {
                     RBT Certification Course
                 </p>
                 <p className="">Complete 40-Hour Training Program</p>
-                <div className="flex justify-center gap-5">
+                <div className="flex flex-wrap justify-center gap-5">
                     <button className='bg-white/10 text-white py-3 px-5 rounded-full'>6 Modules</button>
                     <button className='bg-white/10 text-white py-3 px-5 rounded-full'>75 Lessons</button>
                     <button className='bg-white/10 text-white py-3 px-5 rounded-full'>40 Hours</button>

@@ -5,9 +5,14 @@ import React, { useState } from 'react';
 
 const EnrolledCourse = () => {
     const [selectedVideo, setSelectedVideo] = useState(null);
+    const [selectedLesson, setSelectedLesson] = useState(null);
     const [activeLessonId, setActiveLessonId] = useState(null);
 
+
+
+
     const handleSelectVideo = (lesson) => {
+        setSelectedLesson(lesson)
         if (lesson?.url) {
             setSelectedVideo(lesson.url);
             setActiveLessonId(lesson.id);
@@ -16,11 +21,12 @@ const EnrolledCourse = () => {
     return (
         <div className="flex flex-col lg:flex-row gap-5  min-h-screen container mx-auto">
 
-            <div className="w-full lg:w-[60%] ">
+            <div className="w-full lg:w-[60%]">
                 <CourseVideoPlayer
                     url={selectedVideo}
                     showThumbnail={!selectedVideo}
                     thumbnail={""}
+                    selectedLesson={selectedLesson}
                 />
             </div>
 

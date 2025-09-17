@@ -6,7 +6,7 @@ import React from 'react';
 const CourseBanner = () => {
     return (
         <div className='bg-gradient-to-r from-theme-primary/10 to-white py-20'>
-            <div className="container mx-auto flex flex-col md:flex-row">
+            <div className="container mx-auto flex flex-col md:flex-row px-5">
                 <div className="md:w-3/4">
 
                     <img src={ImageProvider.bacb} alt="" />
