@@ -34,21 +34,25 @@ const router = createBrowserRouter([
       {
         path: "/enrolled-course",
         element: <EnrolledCourse />
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard/>
       }
 
     ],
   },
   // Admin routes
-  {
-    path: "/dashboard",
-    element: <AdminLayout />,
-    children: [
-      {
-        path: "/dashboard",
-        element: <Dashboard />, // ✅ Fixed typo
-      },
-    ],
-  },
+  // {
+  //   path: "/dashboard",
+  //   element: <AdminLayout />,
+  //   children: [
+  //     {
+  //       path: "/dashboard",
+  //       element: <Dashboard />, // ✅ Fixed typo
+  //     },
+  //   ],
+  // },
 ]);
 
 export default router;

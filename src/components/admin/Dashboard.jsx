@@ -1,8 +1,11 @@
 import React from 'react'
+import Statistics from '../dashboard/Statistics'
 
 const Dashboard = () => {
   return (
-    <div className=' text-black'>Dashboard</div>
+    <div className='container mx-auto px-5'>
+      <Statistics />
+    </div>
   )
 }
 

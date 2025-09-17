@@ -24,7 +24,9 @@ const Navbar = () => {
         </div>
 
         <div className="cta-btn flex gap-3 xlg:gap-10">
-          <button className='bg-theme-primary text-white py-3 px-5 rounded-full'>Start Training</button>
+          <Link to={'/dashboard'} className='cursor-pointer'>
+            <button className='bg-theme-primary cursor-pointer text-white py-3 px-5 rounded-full'>Start Training</button>
+          </Link>
           <button className='border border-theme-primary py-3 px-10 rounded-full'>Login</button>
         </div>
       </div>
