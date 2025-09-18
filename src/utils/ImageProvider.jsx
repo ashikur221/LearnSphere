@@ -33,8 +33,14 @@ import contactBanner from '@/assets/images/contactBanner.png'
 import contact from '@/assets/images/contact.png'
 import bacb from '@/assets/images/bacb.png'
 import certificate from '@/assets/images/certificate.png'
+import student from '@/assets/images/student.png'
+import badge from '@/assets/images/badge.png'
+import bacb2 from '@/assets/images/bacb2.png'
 
 export const ImageProvider = {
+    bacb2,
+    badge,
+    student,
     certificate,
     bacb,
     contact,
