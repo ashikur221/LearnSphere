@@ -36,8 +36,14 @@ import certificate from '@/assets/images/certificate.png'
 import student from '@/assets/images/student.png'
 import badge from '@/assets/images/badge.png'
 import bacb2 from '@/assets/images/bacb2.png'
+import conf from '@/assets/images/conf.png'
+import Tikk from '@/assets/images/Tikk.png'
+import bronze from '@/assets/images/bronze.png'
 
 export const ImageProvider = {
+    bronze,
+    Tikk,
+    conf,
     bacb2,
     badge,
     student,

@@ -2,6 +2,7 @@ import CourseModuleSidebar from '@/components/enrolledCourse/CourseModuleSidebar
 import CourseVideoPlayer from '@/components/enrolledCourse/CourseVideoPlayer';
 import { courseModules } from '@/utils/data';
 import React, { useState } from 'react';
+import { ScrollRestoration } from 'react-router-dom';
 
 const EnrolledCourse = () => {
     const [selectedVideo, setSelectedVideo] = useState(null);
@@ -20,7 +21,7 @@ const EnrolledCourse = () => {
     };
     return (
         <div className="flex flex-col lg:flex-row gap-5  min-h-screen container mx-auto">
-
+            <ScrollRestoration />
             <div className="w-full lg:w-[60%]">
                 <CourseVideoPlayer
                     url={selectedVideo}

@@ -21,7 +21,7 @@ import ResourceTab from "./ResourceTab";
 
 const CourseVideoPlayer = ({ url, showThumbnail, thumbnail, selectedLesson }) => {
     const [activeTab, setActiveTab] = useState("transcript");
-    console.log(selectedLesson)
+  
 
     // Tab content data
     const tabContent = {
