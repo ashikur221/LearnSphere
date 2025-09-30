@@ -1,5 +1,5 @@
 // all data
-
+export const ImageDomain = "https://jencjen-fba.softvencefsd.xyz/storage/"
 export const GlobalNavLinks = [
   { name: "Home", link: "/" },
   { name: "About Us", link: "/about" },

@@ -1,5 +1,7 @@
 import { ImageProvider } from '@/utils/ImageProvider';
-import React from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect, useRef } from 'react';
 
 const Card = ({
     children,
@@ -35,15 +37,49 @@ const data = [{
 }];
 
 const FuturesSection = () => {
+
+    const imgRef = useRef(null);
+    const textRef = useRef(null);
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger)
+        gsap.fromTo(
+            imgRef.current,
+            { opacity: 0, x: 150 },
+            {
+                opacity: 1, x: 0, duration: 1, ease: "power4.out",
+                scrollTrigger: {
+                    trigger: imgRef.current,
+                    start: 'top 90%',
+                    toggleActions: 'play none none none',
+                    markers: false,
+                }
+            }
+        )
+        gsap.fromTo(
+            textRef.current,
+            { opacity: 0, y: 150 },
+            {
+                opacity: 1, y: 0, duration: 1, ease: "power4.out", scrollTrigger: {
+                    trigger: textRef.current,
+                    start: 'top 90%',
+                    toggleActions: 'play none none none',
+                    markers: false,
+                }
+            }
+        )
+    }, [])
+
     return (
         <div className='container mx-auto bg-blue-50  flex flex-col md:flex-row px-5 items-center justify-center rounded-l-4xl gap-10 py-10 mt-10'>
             <div className="">
-                <div className="rounded-full">
+                <div ref={imgRef} className="rounded-full">
                     <img src={ImageProvider.dotted} className='absolute hidden md:block' alt="" />
                     <img src={ImageProvider.futureImg} className='rounded-full w-[300px] lg:w-[500px]' alt="" />
                 </div>
             </div>
-            <div className="">
+
+            <div ref={textRef} className="">
 
                 <div>
                     <p className="text-2xl md:text-4xl font-bold text-theme-primary ">Futures{" "}

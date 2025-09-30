@@ -2,9 +2,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ImageProvider } from '@/utils/ImageProvider';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Testimonials = [
     {
@@ -64,8 +66,34 @@ const ServiceCard = ({ testimonial }) => {
 
 const Testimonial = () => {
     const swiperRef = useRef(null);
+
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.fromTo(
+            sectionRef.current,
+            {
+                y: 250,
+                opacity: 0,
+            },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "top 50%",
+                    toggleActions: "play none none none",
+                    markers: false,
+                },
+            }
+        )
+    }, [])
+
     return (
-        <section id='service' className="container mx-auto">
+        <section ref={sectionRef} id='service' className="container mx-auto">
             <p className="text-2xl xlg:text-5xl font-semibold my-10">
                 Student's {" "}
                 <span className="text-theme-primary relative inline-block">

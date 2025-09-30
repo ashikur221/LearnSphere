@@ -1,9 +1,10 @@
+import { ImageDomain } from '@/utils/data';
 import { CustomTikMark } from '@/utils/IconProvider';
 import { ImageProvider } from '@/utils/ImageProvider';
 import React from 'react';
 import { GiCheckMark } from 'react-icons/gi';
 
-const BannerGallery = () => {
+const BannerGallery = ({ data, isLoading }) => {
     const GalleryImages = [
         ImageProvider.bannerImg1,
         ImageProvider.bannerImg2,
@@ -32,14 +33,14 @@ const BannerGallery = () => {
                     ></span>
                 ))}
 
-                {GalleryImages.map((image, index) => (
+                {data?.home_hero?.slice(0, 4)?.map((item, index) => (
                     <div
                         key={index}
                         className={`flex items-center justify-center rounded-[40%] overflow-hidden relative ${bgColors[index]}
           ${index === 0 || index === GalleryImages.length - 1 ? "-mt-52" : ""}`}
                     >
                         <img
-                            src={image}
+                            src={ImageDomain + item?.image}
                             alt=""
                             className="object-cover"
                         />
@@ -49,9 +50,9 @@ const BannerGallery = () => {
 
             </div>
             <div className=" mx-auto w-1/2 flex flex-wrap justify-center gap-5">
-                <button className="bg-white shadow-md py-3 px-5 rounded-full text-small-text flex justify-center items-center gap-3"><CustomTikMark/> BACB Aligned</button>
-                <button className="bg-white shadow-md py-3 px-5 rounded-full text-small-text flex justify-center items-center gap-3"><CustomTikMark/> 100% Online</button>
-                <button className="bg-white shadow-md py-3 px-5 rounded-full text-small-text flex justify-center items-center gap-3"><CustomTikMark/> Certificate Included</button>
+                <button className="bg-white shadow-md py-3 px-5 rounded-full text-small-text flex justify-center items-center gap-3"><CustomTikMark /> </button>
+                <button className="bg-white shadow-md py-3 px-5 rounded-full text-small-text flex justify-center items-center gap-3"><CustomTikMark /> 100% Online</button>
+                <button className="bg-white shadow-md py-3 px-5 rounded-full text-small-text flex justify-center items-center gap-3"><CustomTikMark /> Certificate Included</button>
             </div>
         </div>
 

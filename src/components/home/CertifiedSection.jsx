@@ -9,6 +9,9 @@ import { Badge } from "@/components/ui/badge";
 import { Lock, Users } from "lucide-react";
 import { ImageProvider } from "@/utils/ImageProvider";
 import { BadgeCustomIcon } from "@/utils/IconProvider";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const courses = [
     {
@@ -42,15 +45,55 @@ const courses = [
 ];
 
 const CertifiedSection = () => {
+    const cardsRef = useRef([]);
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Use gsap.context for better cleanup
+        const ctx = gsap.context(() => {
+            gsap.fromTo(cardsRef.current,
+                {
+                    y: 250,
+                    opacity: 0,
+                },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power3.out",
+                    stagger: 0.2,
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: "top 30%",
+                       
+                        toggleActions: "play none none none",
+                    }
+                }
+            );
+        }, sectionRef);
+
+        // Cleanup function
+        return () => ctx.revert();
+    }, []);
+
+    // Clear and reset the refs array
+    useEffect(() => {
+        cardsRef.current = cardsRef.current.slice(0, courses.length);
+    }, []);
+
     return (
-        <section className="container mx-auto py-12">
+        <section ref={sectionRef} className="container mx-auto py-12">
             {/* Top Heading */}
-            <div className=" mb-10">
+            <div className="mb-10">
                 <div className="flex items-center justify-center lg:justify-start gap-4">
                     <div className="w-10 h-10 bg-theme-primary flex items-center justify-center p-2 rounded-full">
                         <BadgeCustomIcon />
                     </div>
-                    <p className="xlg:text-lg text-big-text font-semibold">Guaranteed and certified</p>
+                    <p className="xlg:text-lg text-big-text font-semibold">
+                        Guaranteed and certified
+                    </p>
                 </div>
                 <h2 className="text-2xl xlg:text-5xl font-bold">
                     From Beginner to{" "}
@@ -60,9 +103,12 @@ const CertifiedSection = () => {
 
             {/* Card Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {courses.map((course) => (
+                {courses.map((course, i) => (
                     <Card
                         key={course.id}
+                        ref={(el) => {
+                            cardsRef.current[i] = el;
+                        }}
                         className="overflow-hidden !pt-0 shadow-md hover:shadow-lg transition"
                     >
                         <div className="relative">
@@ -103,8 +149,7 @@ const CertifiedSection = () => {
                                 {course.students} Students
                             </div>
                             <div>
-                                <Progress value={course.progress} className="h-2" >
-                                </Progress>
+                                <Progress value={course.progress} className="h-2" />
                                 <span className="text-xs text-muted-foreground">
                                     Course Progress {course.progress}%
                                 </span>

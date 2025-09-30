@@ -11,7 +11,9 @@ const Navbar = () => {
     <div className=' bg-white my-4'>
       <div className="container  mx-auto   flex items-center justify-between px-2">
         <div className="logo">
-          <img src={ImageProvider.Navlogo} className='w-20' alt="" />
+          <Link to={'/'}>
+            <img src={ImageProvider.Navlogo} className='w-20' alt="" />
+          </Link>
         </div>
 
         <div className="links ml-20 bg-theme-primary py-3 px-4 rounded-full flex gap-4 xlg:gap-10 text-white">

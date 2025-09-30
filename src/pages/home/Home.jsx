@@ -7,14 +7,19 @@ import JenniferSection from '@/components/home/JenniferSection'
 import MissionSection from '@/components/home/MissionSection'
 import NewsLetter from '@/components/home/NewsLetter'
 import Testimonial from '@/components/home/Testimonial'
+import { useFetchHomePageData } from '@/hooks/CMShook'
 import React from 'react'
 
 const Home = () => {
+
+  const { data, isLoading } = useFetchHomePageData();
+  console.log(data);
+
   return (
     <div className=''>
-      <Banner />
+      <Banner data={data} isLoading={isLoading} />
 
-      <BannerGallery />
+      <BannerGallery data={data} isLoading={isLoading} />
       <FuturesSection />
       <ApartSection />
       <CertifiedSection />

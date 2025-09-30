@@ -1,14 +1,64 @@
 import { ImageProvider } from '@/utils/ImageProvider';
-import React from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect, useRef } from 'react';
 
 const MissionSection = () => {
+    const containerRef = useRef(null);
+    const imgRef = useRef(null);
+    const textRef = useRef(null);
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.fromTo(
+            imgRef.current,
+            {
+                x: 250,
+                opacity: 0,
+            },
+            {
+                x: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top 20%",
+                    toggleActions: "play none none none",
+                    markers: false,
+                },
+            }
+        )
+
+        gsap.fromTo(
+            textRef.current,
+            {
+                x: -250,
+                opacity: 0,
+            },
+            {
+                x: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top 20%",
+                    toggleActions: "play none none none",
+                    markers: false,
+                },
+            }
+        )
+    }, [])
+
+
     return (
-        <div className='bg-[#f0fbf7] py-10 mb-10'>
+        <div ref={containerRef} className='bg-[#f0fbf7] py-10 mb-10'>
             <div className="container mx-auto flex flex-col items-center lg:flex-row">
-                <div className="lg:w-1/2">
+                <div ref={imgRef} className="lg:w-1/2">
                     <img src={ImageProvider.mission} alt="" />
                 </div>
-                <div className="lg:w-1/2">
+                <div ref={textRef} className="lg:w-1/2">
                     <p className="text-2xl xlg:text-5xl font-semibold my-10">
                         The {" "}
                         <span className="text-theme-primary relative inline-block">

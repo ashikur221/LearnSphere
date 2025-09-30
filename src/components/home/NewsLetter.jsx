@@ -1,9 +1,36 @@
 import { ImageProvider } from '@/utils/ImageProvider';
-import React from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect, useRef } from 'react';
 
 const NewsLetter = () => {
+
+    const newsRef = useRef(null);
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.fromTo(
+            newsRef.current,
+            {
+                x: 250,
+                opacity: 0,
+            },
+            {
+                x: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: newsRef.current,
+                    start: "top 30%",
+                    toggleActions: "play none none none",
+                    markers: false,
+                },
+            }
+        )
+    }, [])
+
     return (
-        <div className="relative w-full overflow-hidden section-padding-y container mx-auto ">
+        <div ref={newsRef} className="relative w-full overflow-hidden section-padding-y container mx-auto ">
             {/* Background Image */}
             <div className="w-full h-full">
                 <img

@@ -1,12 +1,34 @@
 import { BadgeCustomIcon } from '@/utils/IconProvider';
 import { ImageProvider } from '@/utils/ImageProvider';
-import React from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect, useRef } from 'react';
 
 const JenniferSection = () => {
+
+    const img2Ref = useRef(null);
+    const section2Ref = useRef(null);
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger)
+        gsap.fromTo(img2Ref.current,
+            { opacity: 0, scale: 0 },
+            {
+                opacity: 1, scale: 1, duration: 3, ease: "power4.out",
+                scrollTrigger: {
+                    trigger: section2Ref.current,
+                    start: 'top 10%',
+                    toggleActions: 'play none none none',
+                    markers: false,
+                }
+            }
+        )
+    }, [])
+
     return (
-        <div className="section-padding-y">
-            <div className='border container mx-auto border-black rounded-3xl flex flex-col lg:flex-row gap-10 items-center '>
-                <div className="h-full  lg:w-1/2">
+        <div ref={section2Ref} className="section-padding-y">
+            <div  className='border container mx-auto border-black rounded-3xl flex flex-col lg:flex-row gap-10 items-center '>
+                <div  ref={img2Ref} className="h-full  lg:w-1/2">
                     <img src={ImageProvider.jenny} className='object-fill h-full' alt="" />
                 </div>
 
