@@ -1,11 +1,41 @@
 import { ImageProvider } from '@/utils/ImageProvider';
-import React from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect, useRef } from 'react';
 
 const ProgramSection = () => {
+
+    const imgRef = useRef(null);
+    const desRef = useRef(null);
+    const containerRef = useRef(null);
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.fromTo(
+            imgRef.current,
+            {
+                x: 250,
+                opacity: 0,
+            },
+            {
+                x: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top 30%",
+                    toggleActions: "play none none none",
+                    markers: true,
+                },
+            }
+        )
+    }, [])
+
     return (
         <div>
-            <div className="container mx-auto flex flex-col md:flex-row justify-center gap-5 lg:gap-10 items-center section-padding-y px-5">
-                <div className="md:w-1/2">
+            <div ref={containerRef} className="container mx-auto flex flex-col md:flex-row justify-center gap-5 lg:gap-10 items-center section-padding-y px-5">
+                <div ref={imgRef} className="md:w-1/2">
                     <img src={ImageProvider.program} alt="" className='w-[300px] md:w-[500px]' />
                 </div>
                 <div className="md:w-1/2 space-y-5">
