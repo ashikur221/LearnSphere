@@ -1,7 +1,13 @@
 import { ImageProvider } from '@/utils/ImageProvider';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const AboutBanner = () => {
+
+    const titleRef = useRef(null);
+    const descRef = useRef(null);
+
+    useEffect(()=>{}, [])
+
     return (
         <div>
             <div className="relative w-full overflow-hidden ">

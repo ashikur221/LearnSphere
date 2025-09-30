@@ -8,7 +8,7 @@ import MissionSection from '@/components/home/MissionSection'
 import NewsLetter from '@/components/home/NewsLetter'
 import Testimonial from '@/components/home/Testimonial'
 import { useFetchHomePageData } from '@/hooks/CMShook'
-import React from 'react'
+
 
 const Home = () => {
 
