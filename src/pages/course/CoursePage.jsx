@@ -1,7 +1,7 @@
 import CourseBanner from '@/components/course/CourseBanner';
 import CourseModuleSidebar from '@/components/enrolledCourse/CourseModuleSidebar';
 import { courseModules } from '@/utils/data';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import LearnSection from './LearnSection';
 import PriceSection from './PriceSection';
 import { ScrollRestoration } from 'react-router-dom';
@@ -9,8 +9,35 @@ import InstructorSection from './InstructorSection';
 import FeedbackSection from './FeedbackSection';
 import FAQSection from './FAQSection';
 import { CustomLock } from '@/utils/IconProvider';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const CoursePage = () => {
+
+    const sidebarRef = useRef(null);
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.fromTo(
+            sidebarRef.current,
+            {
+                opacity: 0,
+                x: -100
+            },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: sidebarRef.current,
+                    start: 'top 50%',
+                    toggleActions: 'play none none none',
+                    markers: false
+                }
+            }
+        )
+    }, [])
+
     return (
         <div>
             <ScrollRestoration />
@@ -25,7 +52,7 @@ const CoursePage = () => {
                 </div>
 
 
-                <div className="w-full lg:w-[40%]">
+                <div ref={sidebarRef} className="w-full lg:w-[40%]">
                     <CourseModuleSidebar
                         modules={courseModules}
                     // activeLessonId={activeLessonId}
@@ -43,7 +70,7 @@ const CoursePage = () => {
                         <button className='bg-theme-primary w-full text-center text-white py-3 px-5 rounded  my-5 gap-1'>
                             Enroll Now
                         </button>
-                         <p className="text-xs text-small-text my-4 text-center">© 2023 RBT Certification Course. All rights reserved.</p>
+                        <p className="text-xs text-small-text my-4 text-center">© 2023 RBT Certification Course. All rights reserved.</p>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
     Card,
     CardAction,
@@ -11,6 +11,8 @@ import {
 import { Button } from '../ui/button';
 import { ImageProvider } from '@/utils/ImageProvider';
 import { CustomGoal, CustomMission, CustomVision } from '@/utils/IconProvider';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const CardComponent = ({ data }) => {
     return (
@@ -72,9 +74,32 @@ const CommitmentSection = () => {
             icon: <CustomGoal />
         }
     ]
+    const sectionRef = useRef(null);
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.fromTo(
+            sectionRef.current,
+            {
+                y: 100,
+                opacity: 0
+            },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "top 30%",
+                    toggleActions: "play none none none",
+                    markers: false
+                }
+            }
+        )
+    }, [])
 
     return (
-        <div className='container mx-auto px-5'>
+        <div ref={sectionRef} className='container mx-auto px-5'>
             <div className="w-full lg:w-[55%] mx-auto text-center">
                 <p className="text-2xl font-bold md:text-3xl xlg:text-5xl ">
                     Our Commitment to Building Brighter Futures

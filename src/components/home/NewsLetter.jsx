@@ -11,11 +11,11 @@ const NewsLetter = () => {
         gsap.fromTo(
             newsRef.current,
             {
-                x: 250,
+                y: 50,
                 opacity: 0,
             },
             {
-                x: 0,
+                y: 0,
                 opacity: 1,
                 duration: 0.8,
                 ease: "power3.out",

@@ -1,8 +1,11 @@
 import { CustomBookMark, CustomCertificate, CustomClock, CustomDownload2 } from '@/utils/IconProvider';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Clock } from 'lucide-react';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const PriceSection = () => {
+
     const PriceData = [
         {
             title: "One-time payment",
@@ -23,11 +26,11 @@ const PriceSection = () => {
                     text: "Downloadable resources"
                 },
                 {
-                    icon: <CustomCertificate/>,
+                    icon: <CustomCertificate />,
                     text: "Certificate of completion"
                 },
                 {
-                    icon: <CustomDownload2/>,
+                    icon: <CustomDownload2 />,
                     text: "Lifetime access"
                 }
             ]
@@ -51,11 +54,11 @@ const PriceSection = () => {
                     text: "Downloadable resources"
                 },
                 {
-                    icon: <CustomCertificate/>,
+                    icon: <CustomCertificate />,
                     text: "Certificate of completion"
                 },
                 {
-                    icon: <CustomDownload2/>,
+                    icon: <CustomDownload2 />,
                     text: "Lifetime access"
                 }
             ]
@@ -79,18 +82,43 @@ const PriceSection = () => {
                     text: "Downloadable resources"
                 },
                 {
-                    icon: <CustomCertificate/>,
+                    icon: <CustomCertificate />,
                     text: "Certificate of completion"
                 },
                 {
-                    icon: <CustomDownload2/>,
+                    icon: <CustomDownload2 />,
                     text: "Lifetime access"
                 }
             ]
         }
     ]
+
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.fromTo(
+            sectionRef.current,
+            {
+                opacity: 0,
+                scale: 0.7
+            },
+            {
+                opacity: 1,
+                scale: 1,
+                duration: 0.8,
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: 'top 50%',
+                    toggleActions: 'play none none none',
+                    markers: false
+                }
+            }
+        )
+    }, [])
+
     return (
-        <div className='grid grid-cols-1 lg:grid-cols-2 xlg:grid-cols-3  gap-4'>
+        <div ref={sectionRef} className='grid grid-cols-1 lg:grid-cols-2 xlg:grid-cols-3  gap-4'>
             {
                 PriceData?.map((item, index) => (
                     <div className="border border-theme-primary/30 p-5 rounded-xl shadow-sm space-y-5">

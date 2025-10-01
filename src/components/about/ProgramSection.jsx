@@ -26,7 +26,26 @@ const ProgramSection = () => {
                     trigger: containerRef.current,
                     start: "top 30%",
                     toggleActions: "play none none none",
-                    markers: true,
+                    markers: false,
+                },
+            }
+        )
+        gsap.fromTo(
+            desRef.current,
+            {
+                x: -250,
+                opacity: 0,
+            },
+            {
+                x: 0,
+                opacity: 1,
+                duration: 1.2,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top 30%",
+                    toggleActions: "play none none none",
+                    markers: false,
                 },
             }
         )
@@ -38,7 +57,7 @@ const ProgramSection = () => {
                 <div ref={imgRef} className="md:w-1/2">
                     <img src={ImageProvider.program} alt="" className='w-[300px] md:w-[500px]' />
                 </div>
-                <div className="md:w-1/2 space-y-5">
+                <div ref={desRef} className="md:w-1/2 space-y-5">
                     <p className="text-2xl font-bold md:text-3xl xlg:text-5xl">About Our Program</p>
                     <p className="text-small-text mt-2 md:mt-4 text-xs  md:text-sm ">
                         Our 40-hour RBT training program is fully online, flexible, and designed to meet BACB® requirements. With expert instruction and practical resources, we make it simple for you to start your journey toward RBT certification.

@@ -1,14 +1,39 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
     Accordion,
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion"
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const FAQSection = () => {
+    const sectionRef = useRef(null);
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.fromTo(
+            sectionRef.current,
+            {
+                opacity: 0,
+                y: 50,
+            },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power4.out',
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: 'top 50%',
+                    toggleActions: 'play none none none',
+                    markers: true
+                }
+            }
+        )
+    }, [])
     return (
-        <div>
+        <div ref={sectionRef}>
             <div className="">
                 <p className="text-lg lg:text-2xl font-semibold ">
                     Frequently Asked Questions

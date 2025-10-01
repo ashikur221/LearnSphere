@@ -1,11 +1,30 @@
 import { CustomStar } from '@/utils/IconProvider';
 import { ImageProvider } from '@/utils/ImageProvider';
 import { Avatar, AvatarImage } from '@radix-ui/react-avatar';
-import React from 'react';
+import gsap from 'gsap';
+import React, { useEffect, useRef } from 'react';
 
 const CourseBanner = () => {
+
+    const sectionRef = useRef(null);
+    useEffect(()=>{
+        gsap.fromTo(
+            sectionRef.current,
+            {
+                opacity:0,
+                scale: 0.7
+            },
+            {
+                opacity:1,
+                scale: 1,
+                duration: 1,
+                ease: "power4.out"
+            }
+        )
+    })
+
     return (
-        <div className='bg-gradient-to-r from-theme-primary/10 to-white py-20'>
+        <div ref={sectionRef} className='bg-gradient-to-r from-theme-primary/10 to-white py-20'>
             <div className="container mx-auto flex flex-col md:flex-row px-5">
                 <div className="md:w-3/4">
 

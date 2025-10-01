@@ -1,10 +1,37 @@
 import { DecorationIcon } from '@/utils/IconProvider';
-import React from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect, useRef } from 'react';
 import ReactPlayer from "react-player"
 
 const TrainingSection = () => {
+
+    const containerRef = useRef(null);
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.fromTo(
+            containerRef.current,
+            {
+                y: 250,
+                opacity: 0,
+            },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top 40%",
+                    toggleActions: "play none none none",
+                    markers: false,
+                },
+            }
+        )
+    }, [])
+
     return (
-        <div className='container mx-auto space-y-6 px-5'>
+        <div ref={containerRef} className='container mx-auto space-y-6 px-5'>
             <div className="flex justify-between">
                 <div className="hidden md:block">
                     <DecorationIcon />

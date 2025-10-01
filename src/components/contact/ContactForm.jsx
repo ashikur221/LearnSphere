@@ -1,5 +1,7 @@
 import { ImageProvider } from '@/utils/ImageProvider';
-import React from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { BsInstagram, BsLinkedin, BsTwitter } from 'react-icons/bs';
 import { CgFacebook } from 'react-icons/cg';
@@ -19,10 +21,57 @@ const ContactForm = () => {
         console.log(data)
     }
 
+    const imageRef = useRef(null);
+    const formRef = useRef(null);
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger)
+        gsap.fromTo(
+            imageRef.current,
+            {
+                opacity: 0,
+                x: 100
+            },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: 'top 40%',
+                    toggleActions: 'play none none none',
+                    markers: false
+                }
+            }
+        )
+
+        gsap.fromTo(
+            formRef.current,
+            {
+                opacity: 0,
+                x: -100
+            },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: 'top 40%',
+                    toggleActions: 'play none none none',
+                    markers: false
+                }
+            }
+        )
+    }, [])
+
     return (
-        <div className='contact-form container mx-auto px-5 section-padding-y'>
+        <div ref={sectionRef} className='contact-form container mx-auto px-5 section-padding-y'>
             <div className="flex flex-col-reverse md:flex-row gap-14">
-                <div className="md:w-1/2 w-full space-y-5">
+                <div ref={imageRef} className="md:w-1/2 w-full space-y-5">
                     <div className="bg-theme-primary/10  rounded-2xl">
                         <img src={ImageProvider.contact} alt="" />
                     </div>
@@ -48,7 +97,7 @@ const ContactForm = () => {
                         </div>
                     </div>
                 </div>
-                <div className=" md:w-1/2 w-full">
+                <div ref={formRef} className=" md:w-1/2 w-full">
                     <p className="text-2xl text-big-text font-bold md:text-4xl xlg:text-5xl">Let’s get in touch</p>
                     <p className="text-small-text mt-2 md:mt-4 text-sm md:text-base">
                         Or just reach out manually to <span className="text-theme-primary">example@gmail.com</span>
@@ -75,14 +124,14 @@ const ContactForm = () => {
                             </div>
                         </div>
 
-                         <div className="">
+                        <div className="">
                             <label>Phone Number</label>
                             <div className="border rounded-full p-3">
                                 <input {...register('phone')} type="text" className="bg-transparent w-full outline-none" placeholder="input your phone" />
                             </div>
                         </div>
 
-                         <div className="">
+                        <div className="">
                             <label>Description</label>
                             <div className="border rounded-2xl p-3">
                                 <textarea {...register('description')} type="text" rows={5} className="bg-transparent w-full outline-none" placeholder="Message here" />

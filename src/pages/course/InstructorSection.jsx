@@ -1,10 +1,37 @@
 import { ImageProvider } from '@/utils/ImageProvider';
 import { Avatar, AvatarImage } from '@radix-ui/react-avatar';
-import React from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect, useRef } from 'react';
 
 const InstructorSection = () => {
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.fromTo(
+            sectionRef.current,
+            {
+                opacity: 0,
+                y: 100
+            },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power4.out",
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: 'top 50%',
+                    toggleActions: 'play none none none',
+                    markers: false
+                }
+            }
+        )
+    }, [])
+
     return (
-        <div className='border-2 border-theme-primary/30 p-5 rounded-xl '>
+        <div ref={sectionRef} className='border-2 border-theme-primary/30 p-5 rounded-xl '>
             <p className="text-2xl font-bold md:text-3xl xlg:text-4xl">Your Instructor</p>
             <div className="grid grid-cols-2 gap-5 my-5">
                 <div className="flex items-center gap-1">

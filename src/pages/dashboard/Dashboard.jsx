@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { ImageProvider } from '@/utils/ImageProvider'
 import { ArrowRight, Badge } from 'lucide-react'
 import Statistics from '@/components/dashboard/Statistics';
 import { Link } from 'react-router-dom';
+import gsap from 'gsap';
 
 const Dashboard = () => {
 
@@ -14,8 +15,26 @@ const Dashboard = () => {
         "Expert Instructor Support",
         "Certificate of Completion"
     ]
+
+    const sectionRef = useRef(null);
+    useEffect(() => {
+        gsap.fromTo(
+            sectionRef.current,
+            {
+                opacity: 0,
+                scale: 0.7
+            },
+            {
+                opacity: 1,
+                scale: 1,
+                duration: 1,
+                ease: "power4.out"
+            }
+        )
+    }, [])
+
     return (
-        <div className='container mx-auto px-5'>
+        <div ref={sectionRef} className='container mx-auto px-5'>
             <Statistics />
             <div className="grid lg:grid-cols-2">
                 <div className="border rounded-xl shadow-md">
